@@ -1,0 +1,100 @@
+%[glowa|ogon]
+%[a,b,c,d] a-glowa b,c,d-ogon
+
+?- [X|Y]=[1,2,3,4].
+X = 1,
+Y = [2, 3, 4].
+
+%zadanie 2------------------------------------
+
+pisz([]).
+pisz([X|Y]):-
+    write(X), write(' '),
+    pisz(Y).
+
+?- pisz([]).
+true.
+
+?- pisz([1,2,3]).
+1 2 3 
+true.
+
+%zadanie 3-----------------------------
+
+nalezy(X,[X|_]).
+nalezy(X,[_|Yogon]):-
+    nalezy(X,Yogon).
+	
+?- nalezy(1,[1,23]).
+true ;
+false.
+
+?- nalezy(1,[23,2,3,4,5,1]).
+true ;
+false.
+
+?- nalezy(1,[23,2,3,4,5,11]).
+false.
+
+
+%zadanie 4----------------------------
+
+dlugosc([],0).
+dlugosc([_|Y],L):-
+    dlugosc(Y,X),
+    L is X+1.
+	
+?- dlugosc([1,23,5,7,8,1],L).
+L = 6.
+
+%zadanie 5----------------------------
+
+laczenie([], L, L).
+laczenie([Glowa|Ogon],Lista1,[Glowa|Wynik]):-
+    laczenie(Ogon, Lista1, Wynik).
+	
+?- laczenie([1,2,3],[4,5,6],X).
+X = [1, 2, 3, 4, 5, 6].
+
+
+%zadanie 6----------------------------
+
+dodaj_element(X,Lista,[X|Lista]).
+
+
+?- dodaj_element(1,[2,3,4],NowaLista).
+NowaLista = [1, 2, 3, 4].
+
+
+%zadanie 7----------------------------
+
+usun_element(X, [X|T], T).
+usun_element(X, [H|T], [H|Wynik]):-
+             usun_element(X,T,Wynik).
+			 
+			 
+?- usun_element(3,[1,2,3,4,5],NowaLista).
+NowaLista = [1, 2, 4, 5] 
+
+
+%zadanie 8----------------------------
+
+ostatni(E, [E]).
+ostatni(E, [_|T]):-
+    ostatni(E,T).
+
+?- ostatni(Last,[1,2,3,4,5]).
+Last = 5 
+
+%zadanie 9----------------------------
+
+poczatek([], _).
+poczatek([X|T1], [X|T2]):-
+    poczatek(T1,T2).
+	
+	
+?- poczatek([1,2],[1,2,3,4]).
+true.
+
+
+%zadanie 10----------------------------

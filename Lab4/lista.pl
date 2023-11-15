@@ -1,0 +1,35 @@
+%listy
+[].
+%[aa,b,d,23,ALS,s].
+%[1,2,3,[2,3,4,5]].
+pisz([]).
+pisz([X|Y]):-
+    write(X), write(' '),
+    pisz(Y).
+
+nalezy(X,[X|_]).
+nalezy(X,[_|Yogon]):-
+    nalezy(X,Yogon).
+
+dlugosc([],0).
+dlugosc([_|Y],L):-
+    dlugosc(Y,X),
+    L is X+1.
+
+laczenie([], L, L).
+laczenie([Glowa|Ogon],Lista1,[Glowa|Wynik]):-
+    laczenie(Ogon, Lista1, Wynik).
+
+dodaj_element(X,Lista,[X|Lista]).
+
+usun_element(X, [X|T], T).
+usun_element(X, [H|T], [H|Wynik]):-
+             usun_element(X,T,Wynik).
+
+ostatni(E, [E]).
+ostatni(E, [_|T]):-
+    ostatni(E,T).
+
+poczatek([], _).
+poczatek([X|T1], [X|T2]):-
+    poczatek(T1,T2).
