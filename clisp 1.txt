@@ -1,0 +1,116 @@
+/*
+T zawsze true
+NIL zawsze false
+setq definiuje zmienna, mozna ja nadpisac
+defconstnt chyba na stale zapsiuje zmienna
+exp to e ktoras tam
+sqrt pierwiastek
+sin sinus chyba
+mod modulo
+
+
+
+
+*/
+[1]> (+ 2 2)
+4
+[2]> (* 1 (+ 2 (- 4 5)))
+1
+[3]> (* 1 (+ 2 (- 4 5)))
+1
+[4]> (setq x 10)
+10
+[5]> x
+10
+[6]> (setq x 30)
+30
+[7]> x
+30
+[8]> (setq y (* x 2))
+60
+[9]> (print x)
+
+30
+30
+[10]> y
+60
+[11]> (let ((x 10)) (* x 20))
+200
+[12]> x
+30
+[13]> (defconstant +pi+ 3.141511231231231)
++PI+
+[14]> pi
+3.1415926535897932385L0
+[15]> (if T 3 9)
+3
+[16]> (if NIL 3 9)
+9
+[17]> :to-jest-slowo-kluczowe
+:TO-JEST-SLOWO-KLUCZOWE
+[18]> (+ 4 3/5)
+23/5
+[19]> (exp 1)
+2.7182817
+[20]> (sqrt 4)
+2
+[21]> (sin 30)
+-0.9880316
+[3]> (defconstant +pi+ 3.141511231231231)
++PI+
+[4]> (if (< x 10) 'tak 'nie)
+NIE
+[5]> (when t 5)
+5
+[6]> (unless t 5)
+NIL
+[7]> (setq x 'b)
+B
+[8]> (case x (a 5) ((d e) 7) ((b f) 3) (otherwise 9))
+3
+[9]> (setq a 3)
+3
+[10]> (cond
+    ((evenp a) a) ;jesli a jest parzyste zwroc a
+     ((> a 7) (/ s 2))
+    ((< a 5) (- a 1))
+    (t 25)
+)
+2
+[11]> (defun suma (x y z) (+ x y z))
+SUMA
+[12]> (suma 1 2 3)
+6
+Break 2 [15]> (defun silnia (n) (if (> n 0) (* n (silnia (- n 1))) 1))
+SILNIA
+Break 2 [15]> (silnia 5)
+120
+
+
+
+
+(defun rowKw()
+    (format t "Podaj wspolczynniki a, b i c:~&")
+    (format t "Podaj a: ")
+    (setq a (read))
+    (format t "Podaj b: ")
+    (setq b (read))
+    (format t "Podaj c: ")
+    (setq c (read))
+    (format t "Podaj nastepujace wpolczynniki: a = ~a , b = ~a, c = ~a~%" a b c)
+    (setq delta (- (* b b) (* 4 a c)))
+    (if (< delta 0
+           (format t "brak rozwiazan w zbiorze liczb rzeczywistych. Delta < 0.~%")
+           
+           (if (= delta 0)
+               (progn
+                   (setq x (/ (- b) (* 2 a)))
+                         (format t "jedno rozwiazanie: x = ~a~%" x))
+               (progn
+                   (setq x1 (/ (- (-b) (setq delta) (* 2 a))))
+                   (setq x2 (/ (- (-b) (setq delta) (* 2 a))))
+                   (format t "dwa rozwiazania: x1 = ~a, x2 = ~a~%" x1 x2))
+               )
+           )
+        )
+)
